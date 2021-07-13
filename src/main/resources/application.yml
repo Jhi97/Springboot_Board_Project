@@ -1,0 +1,45 @@
+server:
+  port: 9090
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  freemarker:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot-project?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 111111
+
+  #jpa.database-platform : JPA 데이터베이스 플랫폼을 지정
+  #jpa.open-in-view : 웹 요청이 완료될 때까지 동일한 EntityManager를 갖도록 해줌
+  #jap.show-sql : 콘솔에 JPA 실행 쿼리를 출력
+  #hibernate.format_sql
+  #- 콘솔에 출력되는 JPA 실행 쿼리를 가독성 있게 표현해준다
+  #hibernate.ddl_auto
+  #- 데이터베이스 초기화 전략을 설정
+  #  - none: 아무것도 실행하지 않음
+  #  - create: SessionFactory가 시작될 때 기존 테이블을 삭제 후 다시 생성
+  #  - create-drop: create와 같으나 SessionFactory가 종료될 때 drop을 실행
+  #  - update: 변경된 스키마만 반영
+  #  - validate: 엔티티와 테이블이 정상적으로 매핑되었는지만 확인
+  #logging.level.org.hibernate.type.descriptor.sql
+  #  - SQL에서 물음표로 표기된 부분(bind parameter)을 로그로 출력해서 확인할 수 있음
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: create
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
